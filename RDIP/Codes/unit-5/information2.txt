@@ -1,0 +1,76 @@
+Day Wise Task Description for Porting Experiments
+
+Experiment - 2 : Tokens and Types(CL2)
+
+Introduction: 
+
+Tokens correspond to the total number of word counts in a text while type corresponds to the total count of unique words in a text. An example is shown below
+
+
+
+Objective: 
+
+The objective of this experiment is to impart basic knowledge about the distinction between types and tokens. 
+
+Directory Structure to be Followed:
+
+You have to follow the directory structure as given below.
+
+Points to Note:
+
+The following directory structure has to be strictly followed, as you will be graded on only this structure.
+
+All the folder names mentioned below are case-sensitive, i.e. please make the exact folders with the exact same name and case as mentioned below. Any case-problem that we get will be straight given a 0. You have to create folder names using the  mkdir command.
+
+Create a folder called RDIP(case-sensitive) in the forked repository. You will then create a Codes Folder which will have all your coded files i.e. HTML, CSS and JS files that you have written. The Libraries folder also has to be created that will contain external javascript libraries that may be required for the simulation(threeemin.js, three.js, require.js). Do not include these libraries in the Codes folder at any costs. If you don't have any external libraries that are to be included, you still have to create the Libraries Folder but it can be empty. 
+
+
+
+
+Description and Technical Stack Knowledge Required: 
+
+The current experiment simulation is in PHP. Using the knowledge of what you have learnt in Javascript, HTML and CSS, you have to replicate the experiment. 
+
+Below is a detailed explanation of how the current simulation works in PHP, and then is a day wise breakup of the tasks at hand. You will have to put together these tasks to replicate the experiment in Javascript.
+
+Current Simulation(PHP).
+
+Step - 1: Click on the experiment tab.
+
+Step - 2: You get a dropdown with Corpus 1, 2 and 3 as the options.
+
+Step - 3: Let us select Corpus 1 from the dropdown.
+
+CORPUS - 1
+A mouse was having a very bad time. She could find no food at all. She looked here and there, but there was no food, and she grew very thin. At last the mouse found a basket, full of corn. There was a small hole in the basket, and she crept in. She could just get through the hole. Then she began to eat the corn. Being very hungry, she ate a great deal, and went on eating and eating. She had grown very fat before she felt that she had had enough. When the mouse tried to climb out of the basket, she could not. She was too fat to pass through the hole. " How shall I climb out?" said the mouse. "oh, how shall I climb out?" Just then a rat came along, and he heard the mouse. "Mouse," said the rat, "if you want to climb out of the basket, you must wait till you have grown as thin as you were when you went in."
+
+There is also a message written to “Enter the number of tokens and types for the above corpus:” followed by a table saying #Types and #Tokens. There is also a submit button.
+
+Step - 4: According to the message, our objective is to enter the correct number of tokens and types from the corpus using the description that unique words from the corpus are types and all words are tokens. Let us write the corpus again below and highlight tokens(RED + YELLOW) and types(RED) from the definition.
+
+A mouse was having a very bad time. She could find no food at all. She looked here and there, but there was no food, and she grew very thin. At last the mouse found a basket, full of corn. There was a small hole in the basket, and she crept in. She could just get through the hole. Then she began to eat the corn. Being very hungry, she ate a great deal, and went on eating and eating. She had grown very fat before she felt that she had had enough. When the mouse tried to climb out of the basket, she could not. She was too fat to pass through the hole. " How shall I climb out?" said the mouse. "oh, how shall I climb out?" Just then a rat came along, and he heard the mouse. "Mouse," said the rat, "if you want to climb out of the basket, you must wait till you have grown as thin as you were when you went in." 
+
+Step - 5: If we do not enter 169 and 80 i.e. the count of the types and tokens in the table and the answer is checked the boxes turn red. If the boxes turn red(even one of them), an error message is displayed saying Wrong Answer.
+
+Step - 6: If the answer is correct though(both have to be correct), another button is displayed along with the message Right Answer that says Continue, and when that button is clicked, the right answer message and the submit button vanishes. 
+
+Step - 7: They are replaced by the message “Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.” There is also a box that says, #NewTypes, and a new submit button below this. 
+
+Step - 8: To complete this simulation, we need the right answer for the new types which we get from the concept of stemming. This concept is basically a method of reducing any word to its root word, example is found stems from find, boys stems from boy and so on. You can find all about stemming here. Once you enter a value it tells whether you are right or wrong based on the same RED and GREEN error messages as seen previously. Stemming can be better understood from the following:
+https://towardsdatascience.com/stemming-lemmatization-what-ba782b7c0bd8
+
+Few functionalities to explicitly note that should be there while converting: 
+
+1. You will have to incorporate the snowball stemmer into your javascript code. To use snowball stemmer, you need to first include the require.js file in your libraries folder. You just have to type npm install snowball and then include that file using require.js in your javascript code.
+
+Copy the content from this file into a js file and save it as require.js in the Libraries Folder. 
+https://requirejs.org/docs/release/2.3.6/minified/require.js
+
+Steps to include Snowball in your code
+var Snowball = require('snowball');
+var stemmer = new Snowball('English');
+stemmer.setCurrent('abbreviations');     -----> Word given to code as abbreviations
+stemmer.stem();
+console.log(stemmer.getCurrent());      -----> Gives output as abbrebi
+
+The lines that are bold are to be included in your code for snowball stemmer to work.
